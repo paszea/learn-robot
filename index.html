@@ -49,7 +49,7 @@
 </div>
 
 <p>
-Eager for more, I immediately moved to a harder challenge: multi-lego pick-n-place. ACT couldn't cut it. But two other powerful models could: first Groot N1.
+Eager for more, I immediately moved to a harder challenge: multi-lego pick-n-place. ACT couldn't cut it. But two other powerful models did: first Groot N1.
 </p>
 <div class="video-container">
     <iframe width="560" height="325" src="https://www.youtube.com/embed/dLe7exy6cZU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -82,7 +82,7 @@ The struggle led me to conduct a series of experiments which led to an epiphany 
     <iframe width="325" height="560" src="https://www.youtube.com/embed/dMTH0zFvFww" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 <p>
-I was quite excitied about the discovery. It enabled me to easily build an agentic robot demo like the following. The robot chatted and fetched what's asked of it, and could recover from its failures.
+I was quite excited by the discovery. It enabled me to easily build an agentic robot demo like the following. The robot chatted and fetched what's asked of it, and could recover from its failures.
 </p>
 <div class="video-container">
     <iframe width="325" height="560" src="https://www.youtube.com/embed/eOH3eSNxkfg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -101,7 +101,7 @@ Seeing the success of bbox, I started to wonder whether images, which are the st
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Blind ACT - a poor man&#39;s IK<br><br>How do you like an ACT model that grasps like a pro, but is 4x as fast and invariant to scene changes?<br><br>The so100 in the demo is controlled by a policy that sees nothing. The image on the laptop is for humans to visualize. The robot acts blind. 1/n <a href="https://t.co/S8WgyAARyO">pic.twitter.com/S8WgyAARyO</a></p>&mdash; xun (@paszea) <a href="https://twitter.com/paszea/status/1924872831378358272?ref_src=twsrc%5Etfw">May 20, 2025</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 <p>
-ACT without images trains 16x faster! It made a big difference in my experiment turnover. I further introduced 3D signals (bboxes from two images) in a model, and trained my robot arm to become an expert at stacking blocks.
+ACT without images trains 16x faster! It made a big difference in my experiment turnover while providing pricise control of the robot beheaviors. I further introduced 3D signals (bboxes from two images) in a model, and trained my robot arm to become an expert at stacking blocks.
 </p>
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Get multiview correspondence. Ditch 3d coordinates.<br><br>Using a VLM like gemini, you can perform multiview correspondence to extract bbox&#39;es from two images for an object.<br><br>Now throw away the raw images and feed the bbox&#39;es to a blind ACT model.<br><br>You have a stack master. 1/ <a href="https://t.co/HSHqxpVzVZ">pic.twitter.com/HSHqxpVzVZ</a></p>&mdash; xun (@paszea) <a href="https://twitter.com/paszea/status/1927769275080524031?ref_src=twsrc%5Etfw">May 28, 2025</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
@@ -114,7 +114,7 @@ I've been reading robotics papers along the way. At this point, I came across a 
 In-context learning still requires a few demonstrations. Could we do better without any demonstrations, as some Gemini Robotics demos did, zero-shot? Zero-shot sounded nice!
 </p>
 <p>
-To get zero-shot, I first had an idea of developing a simplified IK model to move the robot's gripper to a given point in images. This simplified IK model was trained using data, not hand-crafted, and required no explicit math calculation or measurement. This X post explains how it's done.
+To get zero-shot, I first had an idea of developing a simplified IK model to move the robot's gripper to a given point in images. This simplified IK model was trained using data, not hand-crafted, and required no coded math calculation or measurement. This X post explains how it's done.
 </p>
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">So100 costs $110. I has no fancy features. You control it by setting its 6-joint positions.<br><br>But you can develop a fancy feature, like a simplified IK to move the arm to an arbitrary position in images. See <a href="https://t.co/1ZzuOJEs4M">pic.twitter.com/1ZzuOJEs4M</a></p>&mdash; xun (@paszea) <a href="https://twitter.com/paszea/status/1932559764241994197?ref_src=twsrc%5Etfw">June 10, 2025</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
@@ -124,14 +124,14 @@ With the help of the IK model, as well as Gemini Live, I could finally have a "H
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr"><a href="https://twitter.com/hashtag/zeroshot?src=hash&amp;ref_src=twsrc%5Etfw">#zeroshot</a> <a href="https://twitter.com/hashtag/so100?src=hash&amp;ref_src=twsrc%5Etfw">#so100</a><br>A robot that talks too much and pauses too often, yet performs tasks Zero Shot. No demonstration needed.<br><br>1/ Put things in a plate <a href="https://t.co/2Z26c4XUI9">pic.twitter.com/2Z26c4XUI9</a></p>&mdash; xun (@paszea) <a href="https://twitter.com/paszea/status/1933280906137240010?ref_src=twsrc%5Etfw">June 12, 2025</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 <p>
-Below is another zero-shot demo where Gemini figured out "a point in front of Kerby." By harvesting the power of a "System 2", it saved much manual chore (teleoperation) for me, and will undoubtedly do so in future for all of us.
+Below is another zero-shot demo where Gemini figured out "a point in front of Kerby." By harvesting the power of a "System 2", it saved much of manual chore (teleoperation) for me, and will undoubtedly do so in future for all of us.
 </p>
 <div class="video-container">
     <iframe width="325" height="560" src="https://www.youtube.com/embed/vGwoSGFgL0Y" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
 <p>
-As a software engineer generalist, I found it very amusing to watch pre-AI era robots playing soccer so awkwardly. Robotics was hard! But things have changed. Impressive robot demos pop up every day on Internet. Even my dreaming cloth folding robot is now a reality as demoed by Physical Intelligence, the company behind Pi0.
+As a software engineer generalist, I found it very amusing to watch pre-AI era robots playing soccer so awkwardly. Robotics was hard! But things have changed. Impressive robot demos pop up every day on Internet. Even my dreaming cloth folding robot is a reality, as demoed by Physical Intelligence, the company behind Pi0.
 </p>
 <p>You could almost smell in the air that a robotic future is coming at us fast:  robots, all shapes and sizes, living with us everywhere, in our homes, offices, and factories, helping us perform all kinds of useful tasks. As I worked on these projects and demos during the two-and-half-month journey, I can't help but feel we are at the cusp of this vision becoming reality.
 </p>
