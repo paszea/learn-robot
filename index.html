@@ -83,20 +83,20 @@ The struggle led me to conduct a series of experiments which led to an epiphany 
 </div>
 <p>
 I was quite excited by the discovery. It enabled me to easily build an agentic robot demo like the following. The robot chatted and fetched what's asked of it, and could recover from its failures.
-(underneath is an agentic flow powered by gemini live and two simple apis, detect_objects and pick_object, that wrap bbox detection and model inference.)
-</p>
+
 <div class="video-container">
     <iframe width="325" height="560" src="https://www.youtube.com/embed/eOH3eSNxkfg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
+<i>(Underneath is an agentic flow powered by gemini live and two simple apis, detect_objects and pick_object, that wrap around bbox detection and model inference.)</i>
+</p>
 
 <p>
 Agentic and autonomous robots are always facinating especially if you combine locomotion and manipulation. I developed another demo that had LeKiwi search the floor for legos to pick up. 
-(i didnt bother to train a model for locomotion. i simply asked gemini to go around in a specific order to find legos.)
 </p>
 <div class="video-container">
     <iframe width="325" height="560" src="https://www.youtube.com/embed/6FK6Pl8VYmI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
-
+<i>(I didnt bother to train a model for locomotion. I simply asked gemini to go around in a specific order to find legos.)</i>
 <p>
 Seeing the success of bbox, I started to wonder whether images, which are the standard input to VLA, are really necessary in the presence of bbox? Could models do away with them? That led to the development of "Blind ACT".
 </p>
