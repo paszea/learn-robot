@@ -31,6 +31,10 @@
             line-height: 1.6;
             color: #555;
         }
+
+        i {
+            color: #555;
+        }
     </style>
 </head>
 <body>
@@ -76,7 +80,7 @@ Challenges now escalated to games! And it gave me the first opportunity to use L
 Yet at this point I didn't really know how to effectively train a VLA to control the robot to pick or place at a specific location especially when there are many combinations. The usual language conditioning of ACT, Pi0 and N1, in my experiments, was not quite up to the task, at least not without a large amount of data. As a result I resorted to manual prescription of a set of primitives, e.g. pick the first lego, put to top-right, etc. How to automate them using a model remained a struggle for me for a while.
 </p>
 <p>
-The struggle led me to conduct a series of experiments which led to an epiphany discovery of using bounding boxes (bbox) to condition ACT for precise control and accuracy <i><(<a href="https://discord.com/channels/1216765309076115607/1237738269500899400/1367605706496282725">Details</a>)</i>:
+The struggle led me to conduct a series of experiments which led to an epiphany discovery of using bounding boxes (bbox) to condition ACT for precise control and accuracy <i>(<a href="https://discord.com/channels/1216765309076115607/1237738269500899400/1367605706496282725">Details</a>)</i>:
 </p>
 <div class="video-container">
     <iframe width="325" height="560" src="https://www.youtube.com/embed/dMTH0zFvFww" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -87,7 +91,7 @@ I was quite excited by the discovery. It enabled me to easily build an agentic r
 <div class="video-container">
     <iframe width="325" height="560" src="https://www.youtube.com/embed/eOH3eSNxkfg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
-<i>(Underneath was an agentic flow powered by gemini live and two simple apis, detect_objects and pick_object, that wrapped around bbox detection and model inference.)</i>
+<i>(Underneath was an agentic flow powered by gemini live and two simple apis, detect_objects and pick_object, for bbox detection and model inference.)</i>
 </p>
 
 <p>
