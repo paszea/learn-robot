@@ -69,7 +69,7 @@ Then Pi0. Pi0 was harder to train than N1. But it performed better than N1 if yo
     <iframe width="325" height="560" src="https://www.youtube.com/embed/JrbZqQxib5k" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 <i>This time with two cameras and trained for long (40k+ steps), Pi0 worked really well.
-Surprisingly N1 didn't in this 2 camera setting.
+Surprisingly N1 didn't do well in this 2 camera setting.
 <a href="https://huggingface.co/spaces/lerobot/visualize_dataset?path=%2Fpaszea%2Fso100_lego_2cam">Dataset</a></i>
 <p>
 Having had a taste of success, I ordered more parts and upgraded so100 to a mobile LeKiwi. By Easter, I trained the LeKiwi to hunt for eggs using Pi0.
@@ -78,7 +78,7 @@ Having had a taste of success, I ordered more parts and upgraded so100 to a mobi
     <iframe width="325" height="560" src="https://www.youtube.com/embed/4a2rNi7PvBs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 <i>The model combined locomotion and manipulation. It's much harder to train. Pi0 had a low success rate. And it didnt always follow instructions to go for the correct colored egg despite it's task-conditioned in training.
- Another interesting thing was that the model could not sit still. It consistently made small movements to the robot wheels that made it hard to manipulate.
+ Another interesting thing was that the model could not sit still. It consistently made small movements to the wheels that made it hard for the arm to manipulate.
 And N1 completely failed on this task.
 <a href="https://huggingface.co/spaces/lerobot/visualize_dataset?path=%2Fpaszea%2Feaster_2">Dataset</a></i>
 <p>
@@ -104,7 +104,7 @@ I was quite excited by the discovery for the model also generalized. It enabled 
 <div class="video-container">
     <iframe width="325" height="560" src="https://www.youtube.com/embed/eOH3eSNxkfg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
-<i>Underneath was an agentic flow powered by gemini live and two simple apis, detect_objects and pick_object, for bbox detection and model inference.</i>
+<i>Underneath was an agentic flow powered by gemini live and two simple apis, detect_objects and pick_object, for bbox detection and model inference respectively.</i>
 </p>
 
 <p>
