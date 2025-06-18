@@ -43,7 +43,7 @@
 <h1>A Software Engineer's Adventure in Robot Land</h1>
 
 <p style="color: #0b5394;"><i>06/17/2025</i></p>
-<p>I know coding. But robots have always been a mystery to me. That started to change in early April 2025, the first time I laid my hands on a robot arm, a so100 I built two weeks after I learned about <a href="https://github.com/huggingface/lerobot">LeRobot</a> open source project. In the two and half months that followed, I felt like a child in a candy shop. I tinkered and experimented. I learned robotics and built demos that I could only dream of at the start of April 2025. Below is a brief account of this journey.
+<p>I know coding. But robots have always been a mystery to me. That started to change in April 2025 after I built a pair of so100s. For the first time I had a real robot to play with. In the 2.5 months that followed, I tinkered, experimented, and built demos I could only dream of at the start of April. I felt like being pulled into a rabbit hole and came out to robot land.
 </p>
 
 <p>I trained my first VLA model, ACT, soon after the arm was built. What a magic moment it was to watch a lifeless arm sprang into life seeking and grasping!
@@ -51,6 +51,8 @@
 <div class="video-container">
     <iframe width="325" height="560" src="https://www.youtube.com/embed/zxb1YeRxSYo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
+<i>ACT is small, fast and effective. Unfortunately it needs cuda for training (on mac mps the loss blows up to inf/nan.) Google Colab is a cheap and convenient place to get cuda. I trained all my models there: ACT on L4, Pi0/Groot N1 on A100(40G).
+<a href="https://huggingface.co/spaces/lerobot/visualize_dataset?path=%2Fpaszea%2Fso100_lego">Dataset</a></i>
 
 <p>
 Eager for more, I quickly moved to a harder challenge: multi-lego pick-n-place. ACT couldn't cut it. But two other powerful models did. First Groot N1.
@@ -58,19 +60,26 @@ Eager for more, I quickly moved to a harder challenge: multi-lego pick-n-place. 
 <div class="video-container">
     <iframe width="560" height="325" src="https://www.youtube.com/embed/dLe7exy6cZU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
+<i>One overhead camera. Finetuned for 20k steps (2 hours.) Pretty impressive it worked so well. I also finetuned Pi0 using the same data but couldn't get it to work nearly as well. Maybe I didn't train it long enough.
+<a href="https://huggingface.co/spaces/lerobot/visualize_dataset?path=%2Fpaszea%2Fso100_lego_mix">Dataset</a></i>
 <p>
 Then Pi0. Pi0 was harder to train than N1. But it performed better than N1. The arm was less shaky and more precise under Pi0.
 </p>
 <div class="video-container">
     <iframe width="325" height="560" src="https://www.youtube.com/embed/JrbZqQxib5k" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
+<i>This time with two cameras and trained for long (40k+ steps). Pi0 worked really well.
+Surprisingly N1 didn't.
+<a href="https://huggingface.co/spaces/lerobot/visualize_dataset?path=%2Fpaszea%2Fso100_lego_2cam">Dataset</a></i>
 <p>
 Having had a taste of success, I ordered more parts and upgraded so100 to a mobile LeKiwi. By Easter, I trained the LeKiwi to hunt for eggs using Pi0.
 </p>
 <div class="video-container">
     <iframe width="325" height="560" src="https://www.youtube.com/embed/4a2rNi7PvBs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
-<i>The model combined locomotion and manipulation. It's much harder to train. The success rate was low. And it didnt always follow instructions, e.g. went for the wrong colored egg.</i>
+<i>The model combined locomotion and manipulation. It's much harder to train. The success rate was low. And it didnt always follow instructions, e.g. went for the wrong colored egg.
+And N1 completely failed on this task.
+<a href="https://huggingface.co/spaces/lerobot/visualize_dataset?path=%2Fpaszea%2Feaster_2">Dataset</a></i>
 <p>
 Challenges now escalated to games! And it gave me the first opportunity to use LLM in a robot project. I called Gemini to help robot come up with moves by giving it snapshots of the board.
 </p>
@@ -86,6 +95,8 @@ The struggle led me to conduct a series of experiments which led to an epiphany 
 <div class="video-container">
     <iframe width="325" height="560" src="https://www.youtube.com/embed/dMTH0zFvFww" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
+<i>I started with 20 episodes as poc and increased it to 60 episodes. Then my so100 jaw broke and was replaced. i had to collect another 10 episodes to finetune the model for the differences caused by the new jaw. 
+    <a href="https://huggingface.co/spaces/lerobot/visualize_dataset?path=%2Fpaszea%2Flekiwi_aug_grab">Dataset</a></i>
 <p>
 I was quite excited by the discovery. It enabled me to easily build an agentic robot demo like the following. The robot chatted and fetched what's asked of it, and could recover from its failures.
 
