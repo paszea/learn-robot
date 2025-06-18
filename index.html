@@ -77,7 +77,7 @@ Having had a taste of success, I ordered more parts and upgraded so100 to a mobi
 <div class="video-container">
     <iframe width="325" height="560" src="https://www.youtube.com/embed/4a2rNi7PvBs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
-<i>The model combined locomotion and manipulation. It's much harder to train. Pi0 had a low success rate. And it didnt always follow instructions for the right color despite it's conditioned in tasks.
+<i>The model combined locomotion and manipulation. It's much harder to train. Pi0 had a low success rate. And it didnt always follow instructions for the right color despite it's task-conditioned in training.
 And N1 completely failed on this task.
 <a href="https://huggingface.co/spaces/lerobot/visualize_dataset?path=%2Fpaszea%2Feaster_2">Dataset</a></i>
 <p>
@@ -95,7 +95,7 @@ The struggle led me to conduct a series of experiments which led to an epiphany 
 <div class="video-container">
     <iframe width="325" height="560" src="https://www.youtube.com/embed/dMTH0zFvFww" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
-<i>I started with 20 episodes as poc and increased it to 60 episodes. Then my so100 jaw broke and was replaced. I had to collect another 10 episodes to finetune the model for the differences caused by the new jaw. 
+<i>I started with 20 episodes as poc and increased the size to 60 episodes which made the model reallly good. Then the moving jaw of so100 broke down and was replaced. I had to collect another 10 episodes to finetune the model to account for the differences caused by the new jaw. 
     <a href="https://huggingface.co/spaces/lerobot/visualize_dataset?path=%2Fpaszea%2Flekiwi_aug_grab">Dataset</a></i>
 <p>
 I was quite excited by the discovery for the model also generalized. It enabled me to easily build an agentic robot demo like the following. The robot chatted and fetched what's asked of it, and could recover from its failures.
