@@ -106,7 +106,7 @@ The struggle led me to conduct a series of experiments which led to an epiphany 
 <i>I started with 20 episodes as poc and increased the size to 60 episodes which made the model reallly good. Then the moving jaw of so100 broke down and was replaced. I had to collect another 10 episodes to finetune the model to account for the differences caused by the new jaw. 
     <a href="https://huggingface.co/spaces/lerobot/visualize_dataset?path=%2Fpaszea%2Flekiwi_aug_grab">Dataset</a></i>
 <p>
-I was quite excited by the discovery for the model also generalized. It enabled me to easily build an agentic robot demo like the following without additional training. The robot chatted and fetched what's asked of it, and could recover from its failures.
+I was quite excited by the discovery since the model also generalized. It enabled me to easily build an agentic robot demo like the following without additional training. The robot chatted and fetched what's asked of it, and could recover from its failures.
 
 <div class="video-container">
     <iframe width="325" height="560" src="https://www.youtube.com/embed/eOH3eSNxkfg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -120,7 +120,7 @@ Agentic and autonomous robots are always facinating especially if you combine lo
 <div class="video-container">
     <iframe width="325" height="560" src="https://www.youtube.com/embed/6FK6Pl8VYmI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
-<i>The model was almost the same as the previous one except cameras were mounted on lekiwi, which enabled lekiwi to roam. And I didnt bother to train a locomotion model. I simply prompty gemini to direct the robot to move in a specific order to find legos.</i>
+<i>The model was almost the same as the previous one except cameras were mounted on lekiwi, which enabled lekiwi to roam. And I didnt bother to train a locomotion model. I simply prompted gemini to direct the robot to go around in a specific order to search for legos.</i>
 <p>
 Seeing the success of bbox, I started to wonder whether images, which are the standard input to VLA, are really necessary in the presence of bbox? Could models do away with them? That led to the development of "Blind ACT".
 <br><i>(Check full X threads for details and datasets)</i>
