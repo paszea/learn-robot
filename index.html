@@ -48,8 +48,8 @@
 <i><p style="color: #0b5394;">06/19/2025</p></i>
 <p>I know how to code. But robots have always been a mystery to me. That changed in April 2025 after I built my first robot arm so100. In the months that followed I tinkered and experimented. Before long I was building demos that were previously unimaginable to me.
 </p>
-<p>What's going on? Robotics is undergoing a ground shift. Things seemingly impossible a few years ago become very solvable today. And <a href="https://github.com/huggingface/lerobot">LeRobotHF</a> made it easy for anyone with coding skills to experience this shift firsthand. 
-I am grateful that I did. It was a great learning experience full of fun.
+<p>What is going on? Robotics is undergoing a ground shift. Things seemingly impossible a few years ago become very solvable today. And <a href="https://github.com/huggingface/lerobot">LeRobotHF</a> made it easy for anyone with coding skills to experience this shift firsthand. 
+I am grateful that I did. It was a great learning experience packed with fun.
 </p>
     
 <h2>The journey starts</h2>
@@ -70,7 +70,7 @@ Eager for more, I moved to a harder challenge: multi-lego pick-n-place. ACT coul
 <i>One overhead camera. Finetuned for 20k steps (2 hours.) Pretty impressive it worked so well. I also finetuned Pi0 for 20k steps using the same data but couldn't get it to work nearly as well. Maybe I didn't train it long enough.
 <a href="https://huggingface.co/spaces/lerobot/visualize_dataset?path=%2Fpaszea%2Fso100_lego_mix">Dataset</a></i>
 <p>
-Then Pi0. Pi0 was harder to train than N1 in some cases like the above. But it performed better than N1 if you could get it work. The arm was less shaky and more precise under Pi0.
+Then Pi0. Despite the failure last time, Pi0 is actually a very good model. And this time I made it work and it worked very well. I could see the arm was visibly less shaky and more precise under Pi0 than N1.
 </p>
 <div class="video-container">
     <iframe width="325" height="560" src="https://www.youtube.com/embed/JrbZqQxib5k" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -84,18 +84,18 @@ Having had a taste of success, I ordered more parts and upgraded so100 to a mobi
 <div class="video-container">
     <iframe width="325" height="560" src="https://www.youtube.com/embed/4a2rNi7PvBs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
-<i>The model combined locomotion and manipulation. It's much harder to train. Pi0 could only achieve a low success rate. Also it didnt always follow instructions to go for the egg of the correct color despite it's task-conditioned in training.
+<i>The model combined locomotion and manipulation. It's much harder to train. Pi0 could only achieve a low success rate. Also it didnt always follow instructions to go for the egg of the asked color despite it's task-conditioned in training.
 Another interesting problem of using model for locomotion is that the model could not stand still. The output actions always had some small movements to the wheels that made it hard for the arm to manipulate. That's why my later projects focused only on the arm.
 Btw, N1 completely failed on this task.
 <a href="https://huggingface.co/spaces/lerobot/visualize_dataset?path=%2Fpaszea%2Feaster_2">Dataset</a></i>
 <p>
-Challenges now escalated to games! And it gave me the first opportunity to use LLM in a robot project. I called Gemini to help robot come up with moves by giving it snapshots of the game board.
+Challenges now escalated to games! And it gave me the first opportunity to use LLM in a robot project. I called Gemini Pro to help robot come up with moves by giving it snapshots of the game board.
 </p>
 <div class="video-container">
     <iframe width="325" height="560" src="https://www.youtube.com/embed/MpV-O8Q5-x4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 <p>
-Yet at this point I didn't really know how to effectively train a VLA to control the robot to pick or place at a specific location especially when there are many combinations. The usual language conditioning of ACT, Pi0 and N1, in my experiments, was not quite up to the task, at least not without a large amount of data. As a result I resorted to manual prescription of a set of primitives, e.g. pick the first lego, put to top-right, etc. How to automate them using a model remained a struggle for me for a while.
+Yet at this point I didn't really know how to effectively train a VLA to control the robot to pick and place at specific locations especially when combinations are many. The usual language conditioning of ACT, Pi0 and N1, in my experiments, was not quite up to the task, at least not without a large amount of data. As a result I resorted to manual prescripting a set of primitives, e.g. pick the first lego, put to top-right, etc. How to automate them using a model remained a struggle for me for a while.
 </p>
 <p>
 The struggle led to a series of experiments which resulted in an epiphany discovery of using bounding boxes (bbox) to condition ACT for precise control and accuracy <i>(<a href="https://discord.com/channels/1216765309076115607/1237738269500899400/1367605706496282725">Details</a>)</i>:
@@ -103,10 +103,10 @@ The struggle led to a series of experiments which resulted in an epiphany discov
 <div class="video-container">
     <iframe width="325" height="560" src="https://www.youtube.com/embed/dMTH0zFvFww" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
-<i>I started with 20 episodes as poc and increased the size to 60 episodes which made the model reallly good. Then the moving jaw of the so100 broke down and was replaced. I had to collect another 10 episodes to finetune the model to account for the differences caused by the new jaw. 
+<i>I started with 20 episodes as poc and increased the size to 60 episodes that made the model work reallly well. Then the moving jaw of the so100 broke down and was replaced. I had to collect another 10 episodes to finetune the model to account for the differences caused by the new jaw. 
     <a href="https://huggingface.co/spaces/lerobot/visualize_dataset?path=%2Fpaszea%2Flekiwi_aug_grab">Dataset</a></i>
 <p>
-I was quite excited by the discovery since the model also generalized. It enabled me to easily build an agentic robot demo like the following without any additional training. The robot chatted and fetched what's asked of it, and could recover from its failures.
+I was quite excited by the bbox discovery since the model also generalized. It enabled me to easily build an agentic robot demo like the following without any additional training. The robot chatted and fetched what's asked of it, and could recover from its failures.
 
 <div class="video-container">
     <iframe width="325" height="560" src="https://www.youtube.com/embed/eOH3eSNxkfg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
