@@ -141,7 +141,7 @@ I've been reading robotics papers along the way. At this point, I came across a 
 In-context learning still requires a few demonstrations. Could we do better without any demonstrations, as some Gemini Robotics demos did, zero-shot? Zero-shot sounded nice!
 </p>
 <p>
-To get zero-shot, I first had the idea of developing a simplified IK model to move the robot's gripper to any given point in images. This simplified IK model was trained using data, not hand-crafted, and required no linear algebra or measurement. This X thread explains how it's done.
+To get zero-shot, I first had the idea of developing a simplified inverse kinematics (IK) model to move the robot's gripper to any given point in images. I had no idea how to manually craft such a model. But I can use AI to train a model that required no linear algebra or measurements. This X thread explains how it's done.
 </p>
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">So100 costs $110. I has no fancy features. You control it by setting its 6-joint positions.<br><br>But you can develop a fancy feature, like a simplified IK to move the arm to an arbitrary position in images. See <a href="https://t.co/1ZzuOJEs4M">pic.twitter.com/1ZzuOJEs4M</a></p>&mdash; xun (@paszea) <a href="https://twitter.com/paszea/status/1932559764241994197?ref_src=twsrc%5Etfw">June 10, 2025</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
