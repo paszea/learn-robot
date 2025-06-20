@@ -120,7 +120,7 @@ Agentic and autonomous robots are always facinating especially if you combine lo
 <div class="video-container">
     <iframe width="325" height="560" src="https://www.youtube.com/embed/6FK6Pl8VYmI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
-<i>The model was almost the same as the previous one except cameras were mounted on lekiwi, which enabled lekiwi to roam. And I didnt bother to train a locomotion model. I simply prompted gemini to direct the robot to go around in a specific order to search for legos.</i>
+<i>The model was almost the same as the previous one except the cameras were mounted on lekiwi, which enabled it to roam. And I didnt bother to train a locomotion model. I simply prompted gemini to direct the robot to go around in a specific order to search for legos.</i>
 <p>
 Seeing the success of bbox, I started to wonder whether images, which are the standard input to VLA, are really necessary in the presence of bbox? Could models do away with them? That led to the development of "Blind ACT".
 <br><i>(Check full X threads for details and datasets)</i>
@@ -128,20 +128,20 @@ Seeing the success of bbox, I started to wonder whether images, which are the st
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Blind ACT - a poor man&#39;s IK<br><br>How do you like an ACT model that grasps like a pro, but is 4x as fast and invariant to scene changes?<br><br>The so100 in the demo is controlled by a policy that sees nothing. The image on the laptop is for humans to visualize. The robot acts blind. 1/n <a href="https://t.co/S8WgyAARyO">pic.twitter.com/S8WgyAARyO</a></p>&mdash; xun (@paszea) <a href="https://twitter.com/paszea/status/1924872831378358272?ref_src=twsrc%5Etfw">May 20, 2025</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 <p>
-ACT without images trains 16x faster! (The tweet got it wrong.) It made a big difference in my experiment turnover while still providing precise control of the robot beheaviors. I further introduced 3D signals (bboxes from two images) in a model, and trained my robot arm to become an expert at stacking blocks.
+ACT without images trains 16x faster! (The tweet got it wrong at 4x.) It made a big difference in my experiment turnover while still providing precise control of the robot beheaviors. I further introduced 3D signals (bboxes from two images) in a model, and trained my robot arm to become an expert at stacking blocks.
 </p>
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Get multiview correspondence. Ditch 3d coordinates.<br><br>Using a VLM like gemini, you can perform multiview correspondence to extract bbox&#39;es from two images for an object.<br><br>Now throw away the raw images and feed the bbox&#39;es to a blind ACT model.<br><br>You have a stack master. 1/ <a href="https://t.co/HSHqxpVzVZ">pic.twitter.com/HSHqxpVzVZ</a></p>&mdash; xun (@paszea) <a href="https://twitter.com/paszea/status/1927769275080524031?ref_src=twsrc%5Etfw">May 28, 2025</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 <p>
-I've been reading robotics papers along the way. At this point, I came across a <a href="http://arxiv.org/abs/2403.19578">paper</a> and realized the bbox is one type of a broader concept called keypoints. Great news! It meant I could try the LLM in-context learning idea discussed in the paper, which led to this experiment. 
+Along the way I've been reading robotics papers. At this point, I came across a <a href="http://arxiv.org/abs/2403.19578">paper</a> and realized the bbox is one type of a broad concept called keypoints. Great news! It meant I could try the LLM in-context learning idea discussed in the paper, which led to this experiment. 
 </p>
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">In-context learning to control so100<br><br>Give gemini-2.5-flash a few examples. It learned to control my so100: <a href="https://t.co/c03bCbUgPo">pic.twitter.com/c03bCbUgPo</a></p>&mdash; xun (@paszea) <a href="https://twitter.com/paszea/status/1929659534517354870?ref_src=twsrc%5Etfw">June 2, 2025</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 <p>
-In-context learning still requires a few demonstrations. Could we do better without any demonstrations, as some Gemini Robotics demos did, zero-shot? Zero-shot sounded nice!
+In-context learning still requires a few demonstrations. Could we do better without any demonstrations, as some Gemini Robotics demos did, like zero-shot? 
 </p>
 <p>
-To get zero-shot, I first had the idea of developing a simplified inverse kinematics (IK) model to move the robot's gripper to any given point in images. I had no idea how to manually craft such a model for so100. But I could use AI to train a model to do it for me, which required no linear algebras or measurements. This X thread explains how it's done.
+Zero-shot sounded nice! To get it, I first had the idea of developing a simplified inverse kinematics (IK) model to move the robot's gripper to any given point in images. I had no idea how to manually craft such a model for so100. But I could use AI to train a model to do it for me, which required no linear algebras or measurements. This X thread explains how it's done.
 </p>
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">So100 costs $110. I has no fancy features. You control it by setting its 6-joint positions.<br><br>But you can develop a fancy feature, like a simplified IK to move the arm to an arbitrary position in images. See <a href="https://t.co/1ZzuOJEs4M">pic.twitter.com/1ZzuOJEs4M</a></p>&mdash; xun (@paszea) <a href="https://twitter.com/paszea/status/1932559764241994197?ref_src=twsrc%5Etfw">June 10, 2025</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
